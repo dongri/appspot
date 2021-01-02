@@ -1,7 +1,13 @@
-{{template "header" .}}
+  {{template "header" .}}
 
-  {{ range . }}
-    {{ .Title }} / {{ .URL }}
+  <div class="issues">
+  {{ range .issues }}
+    <div class="issue">
+      <div class="title">{{ .Title }}</div>
+      <div class="body">{{ .Body }}</div>
+      <div class="created">{{ .CreatedAt }}</div>
+    </div>
   {{ end }}
+  </div>
 
-{{template "footer"}}
+  {{template "footer"}}

@@ -13,3 +13,6 @@
 # limitations under the License.
 
 runtime: go111 # replace with go111 for Go 1.11
+
+includes:
+  - secret.yaml
