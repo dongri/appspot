@@ -1,0 +1,7 @@
+{{template "header" .}}
+
+  {{ range . }}
+    {{ .Title }} / {{ .URL }}
+  {{ end }}
+
+{{template "footer"}}

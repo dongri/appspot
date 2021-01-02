@@ -19,14 +19,19 @@ package main
 
 // [START import]
 import (
-	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"os"
+	"path"
 )
 
 // [END import]
 // [START main_func]
+type Project struct {
+	Title string
+	URL   string
+}
 
 func main() {
 	http.HandleFunc("/", indexHandler)
@@ -55,7 +60,23 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	fmt.Fprint(w, "Hello, World! Hello, GAE!")
+	var projects []Project
+	projects = append(projects, Project{"LGTM", "https://lgtm.lol"})
+	projects = append(projects, Project{"ToDo", "https://todo.hackerth.com"})
+	projects = append(projects, Project{"Play", "https://play.hackerth.com"})
+
+	fp := path.Join("views", "index.html")
+	header := path.Join("views", "header.html")
+	footer := path.Join("views", "footer.html")
+	tmpl, err := template.ParseFiles(fp, header, footer)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if err := tmpl.Execute(w, projects); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 
 // [END indexHandler]
