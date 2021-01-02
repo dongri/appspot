@@ -3,7 +3,7 @@ body {
 }
 .container {
   margin: auto;
-  width: 60%;
+  max-width: 1024px;
   margin-top: 50px;
   margin-bottom: 50px;
 }
