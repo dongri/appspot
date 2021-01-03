@@ -31,3 +31,12 @@ footer {
   margin: 50px;
   text-align: center;
 }
+pre {
+  background-color: #181818;
+  padding: 10px;
+  color: #EEE;
+  border-radius: 5px;
+}
+p {
+  margin: 0px;
+}
