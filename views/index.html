@@ -23,9 +23,7 @@
     });
     var elements = document.getElementsByClassName("body");
     elements = Array.from(elements);
-    console.log(elements);
     elements.forEach(element => {
-      console.log(element);
       element.innerHTML = md.render(element.innerText);
     });
   </script>
